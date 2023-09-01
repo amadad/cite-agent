@@ -6,17 +6,27 @@ export const config = {
 
 const handler = async (req: Request): Promise<Response> => {
   try {
-    const { prompt, apiKey } = (await req.json()) as {
+    const { prompt } = (await req.json()) as {
       prompt: string;
-      apiKey: string;
     };
+    
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      console.error("OPENAI_API_KEY is not set in environment variables.");
+      return new Response("Server Configuration Error", { status: 500 });
+    }
 
     const stream = await OpenAIStream(prompt, apiKey);
 
     return new Response(stream);
   } catch (error) {
     console.error(error);
-    return new Response("Error", { status: 500 });
+    
+    // Using a type assertion for the error message
+    const errorMessage = (error as Error).message || "An unexpected error occurred";
+    
+    return new Response(`Error: ${errorMessage}`, { status: 500 });
   }
 };
 
