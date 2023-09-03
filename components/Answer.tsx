@@ -15,7 +15,7 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
       <div className="overflow-auto text-2xl sm:text-4xl">{searchQuery.query}</div>
 
       <div className="border-b border-zinc-800 pb-4">
-        <div className="text-md text-blue-500">Answer</div>
+        <div className="text-md text-yellow">Answer</div>
 
         <div className="mt-2 overflow-auto">{replaceSourcesWithLinks(answer, searchQuery.sourceLinks)}</div>
       </div>
@@ -23,7 +23,7 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
       {done && (
         <>
           <div className="border-b border-zinc-800 pb-4">
-            <div className="text-md text-blue-500">Sources</div>
+            <div className="text-md text-yellow-100">Sources</div>
 
             {searchQuery.sourceLinks.map((source, index) => (
               <div
@@ -44,7 +44,7 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
           </div>
 
           <button
-            className="flex h-10 w-52 items-center justify-center rounded-full bg-blue-500 p-2 hover:cursor-pointer hover:bg-blue-600"
+            className="flex h-10 w-52 items-center justify-center rounded-full bg-yellow-100 p-2 hover:cursor-pointer hover:bg-yellow-200"
             onClick={onReset}
           >
             <IconReload size={18} />
@@ -64,7 +64,7 @@ const replaceSourcesWithLinks = (answer: string, sourceLinks: string[]) => {
       return (
         <a
           key={index}
-          className="hover:cursor-pointer text-blue-500"
+          className="hover:cursor-pointer text-yellow-100"
           href={link}
           target="_blank"
           rel="noopener noreferrer"
