@@ -25,7 +25,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className="h-screen overflow-auto bg-[#18181C] text-[#D4D4D8]">
+      <div className="h-screen overflow-auto bg-[#251629] text-[#D4D4D8]">
         <a className="absolute top-0 right-12 p-4 cursor-pointer" href="https://twitter.com/sctyinc" target="_blank" rel="noreferrer">
           <IconBrandTwitter />
         </a>
@@ -51,12 +51,6 @@ export default function Home() {
             onAnswerUpdate={(value) => setAnswer((prev) => prev + value)}
             onDone={setDone}
           />
-        )}
-
-        {time && (
-          <div className="absolute bottom-4 left-4">
-            Current Time: {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}
-          </div>
         )}
       </div>
     </>
